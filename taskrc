@@ -1,0 +1,36 @@
+# [Created by task 3.1.0 10/16/2024 08:13:17]
+data.location=/home/zack/Documents/task
+news.version=3.1.0
+
+# To use the default location of the XDG directories,
+# move this configuration file from ~/.taskrc to ~/.config/task/taskrc and update location config as follows:
+
+hooks.location=~/.config/task/hooks
+
+# Color theme (uncomment one to use)
+#include light-16.theme
+#include light-256.theme
+#include dark-16.theme
+#include dark-256.theme
+#include dark-red-256.theme
+#include dark-green-256.theme
+#include dark-blue-256.theme
+#include dark-violets-256.theme
+#include dark-yellow-green.theme
+#include dark-gray-256.theme
+#include dark-gray-blue-256.theme
+include solarized-dark-256.theme
+#include solarized-light-256.theme
+#include no-color.theme
+
+report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.count,urgency
+
+
+uda.jira_key.type=string
+uda.jira_key.label=Jira Key
+
+uda.priority.values=H,M,,L
+urgency.uda.priority.H.coefficient=6.0
+urgency.uda.priority.M.coefficient=3.9
+urgency.uda.priority..coefficient=1.8
+urgency.uda.priority.L.coefficient=0
