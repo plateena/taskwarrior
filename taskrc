@@ -38,4 +38,5 @@ urgency.uda.priority.L.coefficient=0
 # verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,override,recur
 verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,recur
 
+regex=on
 search.case.sensitive=no
