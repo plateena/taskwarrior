@@ -25,6 +25,13 @@ include solarized-dark-256.theme
 
 report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.count,urgency
 
+# Custom report for tasks with jira_key
+report.jira.description=Tasks with Jira Key
+report.jira.columns=id,project,priority,due,jira_key,description,status,urgency
+report.jira.labels=ID,Project,Priority,Due,Jira Key,Description,Stat,Urg
+report.jira.sort=urgency-,priority+
+report.jira.sort=priority-,due+
+report.jira.filter=status.not:completed and status.not:deleted and jira_key.any:
 
 uda.jira_key.type=string
 uda.jira_key.label=Jira Key
@@ -36,7 +43,11 @@ urgency.uda.priority..coefficient=1.8
 urgency.uda.priority.L.coefficient=0
 
 # verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,override,recur
-verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,recur
+# verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,recur
+verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,recur,filter
+# verbose=yes
 
 regex=on
 search.case.sensitive=no
+
+# debug=on
