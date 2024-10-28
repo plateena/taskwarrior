@@ -42,6 +42,8 @@ urgency.uda.priority.M.coefficient=3.9
 urgency.uda.priority..coefficient=1.8
 urgency.uda.priority.L.coefficient=0
 
+urgency.active.coefficient=20
+
 # verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,override,recur
 # verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,recur
 verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,recur,filter
