@@ -33,6 +33,16 @@ report.jira.sort=urgency-,priority+
 report.jira.sort=priority-,due+
 report.jira.filter=status.not:completed and status.not:deleted and jira_key.any:
 
+# report.active.columns=id,start,start.age,entry.age,depends.indicator,priority,project,tags,recur,wait,scheduled.remaining,due,until,description
+report.active.columns=id,start.age,description
+report.active.context=1
+report.active.description=Active tasks
+report.active.filter=status:pending -WAITING +ACTIVE
+# report.active.labels=ID,Started,Active,Age,D,P,Project,Tags,Recur,W,Sch,Due,Until,Description
+report.active.labels=ID,Active,Description
+report.active.sort=project+,start+
+
+
 uda.jira_key.type=string
 uda.jira_key.label=Jira Key
 
@@ -43,13 +53,20 @@ urgency.uda.priority..coefficient=1.8
 urgency.uda.priority.L.coefficient=0
 
 urgency.active.coefficient=20
+# urgency.age.coefficient=0.5
+# urgency.project.coefficient=0
+urgency.annotations.coefficient=0.1
+# urgency.tags.coefficient=0.1
+# urgency.due.coefficient=20
 
 # verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,override,recur
 # verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,recur
-verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,recur,filter
+# verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,recur,filter
 # verbose=yes
+verbose=no
 
 regex=on
 search.case.sensitive=no
 
 # debug=on
+# context.jira.read=\/^JIRA\/
