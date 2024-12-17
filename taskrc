@@ -1,6 +1,6 @@
 # [Created by task 3.1.0 10/16/2024 08:13:17]
 data.location=/home/zack/Documents/task
-news.version=3.1.0
+news.version=3.2.0
 
 # To use the default location of the XDG directories,
 # move this configuration file from ~/.taskrc to ~/.config/task/taskrc and update location config as follows:
@@ -23,7 +23,12 @@ include solarized-dark-256.theme
 #include solarized-light-256.theme
 #include no-color.theme
 
-report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.count,urgency
+report.next.columns=id,status.short,scheduled.remaining,start.age,description.count,due.remaining,tags,urgency
+report.next.labels=ID,St,Sch,St,Description,Due,Tags,urgency
+report.next.filter=status:pending -WAITING -sub limit:page
+
+
+# report.next.label=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.count,urgency
 
 # Custom report for tasks with jira_key
 report.jira.description=Tasks with Jira Key
@@ -59,14 +64,21 @@ urgency.annotations.coefficient=0.1
 # urgency.tags.coefficient=0.1
 # urgency.due.coefficient=20
 
+urgency.blocking.coefficient=0.1
+urgency.blocked.coefficient=0.1
+
+urgency.user.tag.Deployed.coefficient=-6
+
+
 # verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,override,recur
 # verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,recur
-# verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,recur,filter
+verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,recur,filter
 # verbose=yes
-verbose=no
+# verbose=no
 
 regex=on
 search.case.sensitive=no
 
 # debug=on
-# context.jira.read=\/^JIRA\/
+context.jira.read=\/^JIRA\/
+context.meet=project:work.meeting
