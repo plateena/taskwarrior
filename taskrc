@@ -50,6 +50,8 @@ report.active.sort=project+,start+
 
 uda.jira_key.type=string
 uda.jira_key.label=Jira Key
+uda.components.type=string
+uda.components.label=Components
 
 uda.priority.values=H,M,,L
 urgency.uda.priority.H.coefficient=6.0
