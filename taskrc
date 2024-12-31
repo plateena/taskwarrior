@@ -1,6 +1,7 @@
 # [Created by task 3.1.0 10/16/2024 08:13:17]
 data.location=/home/zack/Documents/task
-news.version=3.2.0
+# data.location=/home/zack/Documents/task/personal
+news.version=3.3.0
 
 # To use the default location of the XDG directories,
 # move this configuration file from ~/.taskrc to ~/.config/task/taskrc and update location config as follows:
@@ -26,7 +27,7 @@ include solarized-dark-256.theme
 report.next.columns=id,status.short,scheduled.remaining,start.age,description.count,due.remaining,tags,urgency
 report.next.labels=ID,St,Sch,St,Description,Due,Tags,urgency
 report.next.filter=status:pending -WAITING -sub limit:page
-
+# report.next.filter=
 
 # report.next.label=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.count,urgency
 
@@ -70,6 +71,10 @@ urgency.blocking.coefficient=0.1
 urgency.blocked.coefficient=0.1
 
 urgency.user.tag.Deployed.coefficient=-6
+
+urgency.user.tag.sprint.coefficient=1
+color.tag.sprint=magenta bold
+color.tag.CodeReview=cyan
 
 
 # verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,override,recur
