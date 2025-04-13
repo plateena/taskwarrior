@@ -73,7 +73,7 @@ urgency.blocked.coefficient=0.1
 urgency.user.tag.Deployed.coefficient=-6
 
 urgency.user.tag.sprint.coefficient=1
-color.tag.sprint=magenta bold
+color.tag.sprint=magenta bold underline
 color.tag.CodeReview=cyan
 
 
