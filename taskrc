@@ -1,16 +1,17 @@
-# [Created by task 3.1.0 10/16/2024 08:13:17]
+# [Created by task 3.4.1 5/6/2025 11:33:06]
 data.location=/home/zack/Documents/task
-# data.location=/home/zack/Documents/task/personal
-news.version=3.3.0
+news.version=3.4.1
 
 # To use the default location of the XDG directories,
 # move this configuration file from ~/.taskrc to ~/.config/task/taskrc and update location config as follows:
 
+#data.location=~/.local/share/task
 hooks.location=~/.config/task/hooks
 
 # Color theme (uncomment one to use)
 #include light-16.theme
 #include light-256.theme
+#include bubblegum-256.theme
 #include dark-16.theme
 #include dark-256.theme
 #include dark-red-256.theme
@@ -26,15 +27,12 @@ include solarized-dark-256.theme
 
 report.next.columns=id,status.short,scheduled.remaining,start.age,description.count,due.remaining,tags,urgency
 report.next.labels=ID,St,Sch,St,Description,Due,Tags,urgency
-report.next.filter=status:pending -WAITING -sub limit:page
-# report.next.filter=
-
-# report.next.label=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.count,urgency
+report.next.filter=status:pending -WAITING -sub
 
 # Custom report for tasks with jira_key
 report.jira.description=Tasks with Jira Key
-report.jira.columns=id,project,priority,due,jira_key,description,status,urgency
-report.jira.labels=ID,Project,Priority,Due,Jira Key,Description,Stat,Urg
+report.jira.columns=id,project,priority,due,jira_key,description,jira_stat,status,urgency
+report.jira.labels=ID,Project,Priority,Due,Jira Key,Description,Jira Status,Stat,Urg
 report.jira.sort=urgency-,priority+
 report.jira.sort=priority-,due+
 report.jira.filter=status.not:completed and status.not:deleted and jira_key.any:
@@ -48,11 +46,12 @@ report.active.filter=status:pending -WAITING +ACTIVE
 report.active.labels=ID,Active,Description
 report.active.sort=project+,start+
 
-
 uda.jira_key.type=string
 uda.jira_key.label=Jira Key
 uda.components.type=string
 uda.components.label=Components
+uda.jira_stat.type=string
+uda.jira_stat.label=Jira Status
 
 uda.priority.values=H,M,,L
 urgency.uda.priority.H.coefficient=6.0
@@ -69,19 +68,16 @@ urgency.annotations.coefficient=0.1
 
 urgency.blocking.coefficient=0.1
 urgency.blocked.coefficient=0.1
+urgency.scheduled.coefficient=1.0
 
 urgency.user.tag.Deployed.coefficient=-6
 
-urgency.user.tag.sprint.coefficient=1
-color.tag.sprint=magenta bold underline
+urgency.user.tag.sprint.coefficient=3
+color.tag.sprint=magenta bold
 color.tag.CodeReview=cyan
 
-
-# verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,override,recur
-# verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,recur
-verbose=affected,blank,context,edit,header,footnote,label,new-id,news,project,special,sync,recur,filter
 # verbose=yes
-# verbose=no
+ verbose=affected,blank,context,edit,header,footnote,label,new-id,new-uuid,news,project,special,sync,recur,filter,unwait
 
 regex=on
 search.case.sensitive=no
@@ -89,3 +85,9 @@ search.case.sensitive=no
 # debug=on
 context.jira.read=\/^JIRA\/
 context.meet=project:work.meeting
+journal.info=off
+context.sprint.read=+sprint
+context.sprint.write=+sprint
+
+confirmation=on
+recurrence.confirmation=on
