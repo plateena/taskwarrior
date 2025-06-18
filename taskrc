@@ -33,8 +33,8 @@ report.next.filter=status:pending -WAITING -sub
 report.jira.description=Tasks with Jira Key
 report.jira.columns=id,project,priority,due,jira_key,description,jira_stat,status,urgency
 report.jira.labels=ID,Project,Priority,Due,Jira Key,Description,Jira Status,Stat,Urg
-report.jira.sort=urgency-,priority+
-report.jira.sort=priority-,due+
+report.jira.sort=due+,urgency-,priority+
+# report.jira.sort=priority-,due+
 report.jira.filter=status.not:completed and status.not:deleted and jira_key.any:
 
 # report.active.columns=id,start,start.age,entry.age,depends.indicator,priority,project,tags,recur,wait,scheduled.remaining,due,until,description
@@ -48,6 +48,8 @@ report.active.sort=project+,start+
 
 uda.jira_key.type=string
 uda.jira_key.label=Jira Key
+uda.link.type=string
+uda.link.label=Links
 uda.components.type=string
 uda.components.label=Components
 uda.jira_stat.type=string
@@ -83,11 +85,12 @@ regex=on
 search.case.sensitive=no
 
 # debug=on
+context.inherit=no
 context.jira.read=\/^JIRA\/
 context.meet=project:work.meeting
-journal.info=off
 context.sprint.read=+sprint
 context.sprint.write=+sprint
+journal.info=off
 
 confirmation=on
 recurrence.confirmation=on
