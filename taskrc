@@ -1,5 +1,6 @@
 # [Created by task 3.4.1 5/6/2025 11:33:06]
-data.location=/home/zack/Documents/task
+# data.location=/home/mzd/Documents/task
+data.location=$HOME/Documents/task
 news.version=3.4.1
 
 # To use the default location of the XDG directories,
@@ -31,7 +32,7 @@ report.next.filter=status:pending -WAITING -sub
 
 # Custom report for tasks project todo
 report.todo.description=Tasks with project todo
-report.todo.filter=status.not:completed and status.not:deleted and project:todo
+report.todo.filter=status.not:completed and status.not:deleted and status.not:waiting and project:todo
 report.todo.columns=id,status.short,scheduled.remaining,start.age,description.count,due.remaining,tags,urgency
 report.todo.labels=ID,St,Sch,St,Description,Due,Tags,urgency
 report.todo.sort=due+,urgency-,priority+
@@ -42,7 +43,7 @@ report.jira.columns=id,project,priority,due,jira_key,description,jira_stat,urgen
 report.jira.labels=ID,Project,Priority,Due,Jira Key,Description,Jira Status,Urg
 report.jira.sort=due+,urgency-,priority+
 # report.jira.sort=priority-,due+
-report.jira.filter=status.not:completed and status.not:deleted and jira_key.any:
+report.jira.filter=jira_key.any: -WAITING -COMPLETED -DELETED
 
 report.jira-todo.description=Tasks with Jira Key
 report.jira-todo.columns=id,project,priority,due,jira_key,description,jira_stat,urgency
