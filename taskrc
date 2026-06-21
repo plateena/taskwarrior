@@ -1,63 +1,37 @@
-# [Created by task 3.4.1 5/6/2025 11:33:06]
-# data.location=/home/mzd/Documents/task
 data.location=$HOME/Documents/task
 news.version=3.4.1
 
-# To use the default location of the XDG directories,
-# move this configuration file from ~/.taskrc to ~/.config/task/taskrc and update location config as follows:
-
-#data.location=~/.local/share/task
 hooks.location=~/.config/task/hooks
 
-# Color theme (uncomment one to use)
-#include light-16.theme
-#include light-256.theme
-#include bubblegum-256.theme
-#include dark-16.theme
-#include dark-256.theme
-#include dark-red-256.theme
-#include dark-green-256.theme
-#include dark-blue-256.theme
-#include dark-violets-256.theme
-#include dark-yellow-green.theme
-#include dark-gray-256.theme
-#include dark-gray-blue-256.theme
-include solarized-dark-256.theme
-#include solarized-light-256.theme
-#include no-color.theme
+include /home/mzd/.config/task/themes/nord.theme
 
 report.next.columns=id,status.short,scheduled.remaining,start.age,description.count,due.remaining,tags,urgency
 report.next.labels=ID,St,Sch,St,Description,Due,Tags,urgency
-report.next.filter=status:pending -WAITING -sub
+report.next.filter=status:pending -WAITING -sub -hide -give_away
+report.next.sort=urgency-
 
-# Custom report for tasks project todo
 report.todo.description=Tasks with project todo
-report.todo.filter=status.not:completed and status.not:deleted and status.not:waiting and project:todo
+report.todo.filter=status.not:completed and status.not:deleted and status.not:waiting and project:todo -give_away
 report.todo.columns=id,status.short,scheduled.remaining,start.age,description.count,due.remaining,tags,urgency
 report.todo.labels=ID,St,Sch,St,Description,Due,Tags,urgency
 report.todo.sort=due+,urgency-,priority+
 
-# Custom report for tasks with jira_key
 report.jira.description=Tasks with Jira Key
 report.jira.columns=id,project,priority,due,jira_key,description,jira_stat,urgency
 report.jira.labels=ID,Project,Priority,Due,Jira Key,Description,Jira Status,Urg
 report.jira.sort=due+,urgency-,priority+
-# report.jira.sort=priority-,due+
-report.jira.filter=jira_key.any: -WAITING -COMPLETED -DELETED
+report.jira.filter=jira_key.any: -WAITING -COMPLETED -DELETED -hide -give_away
 
 report.jira-todo.description=Tasks with Jira Key
 report.jira-todo.columns=id,project,priority,due,jira_key,description,jira_stat,urgency
 report.jira-todo.labels=ID,Project,Priority,Due,Jira Key,Description,Jira Status,Urg
 report.jira-todo.sort=due+,urgency-,priority+
-# report.jira-todo.sort=priority-,due+
-report.jira-todo.filter=status.not:completed and status.not:deleted and jira_key.any: and jira_stat:ToDo or jira_stat:InProgress
+report.jira-todo.filter=status.not:completed and status.not:deleted and jira_key.any: and (jira_stat:ToDo or jira_stat:InProgress) -hide -give_away
 
-# report.active.columns=id,start,start.age,entry.age,depends.indicator,priority,project,tags,recur,wait,scheduled.remaining,due,until,description
 report.active.columns=id,start.age,description
 report.active.context=1
 report.active.description=Active tasks
 report.active.filter=status:pending -WAITING +ACTIVE
-# report.active.labels=ID,Started,Active,Age,D,P,Project,Tags,Recur,W,Sch,Due,Until,Description
 report.active.labels=ID,Active,Description
 report.active.sort=project+,start+
 
@@ -77,29 +51,25 @@ urgency.uda.priority..coefficient=1.8
 urgency.uda.priority.L.coefficient=0
 
 urgency.active.coefficient=20
-# urgency.age.coefficient=0.5
-# urgency.project.coefficient=0
-urgency.annotations.coefficient=0.1
-# urgency.tags.coefficient=0.1
-# urgency.due.coefficient=20
-
-urgency.blocking.coefficient=0.1
+urgency.age.coefficient=0
+urgency.annotations.coefficient=0
+urgency.due.coefficient=20.0
+urgency.blocking.coefficient=4.0
 urgency.blocked.coefficient=0.1
-urgency.scheduled.coefficient=1.0
-
+urgency.scheduled.coefficient=0
+urgency.user.tag.today.coefficient=10.0
 urgency.user.tag.Deployed.coefficient=-6
-
 urgency.user.tag.sprint.coefficient=3
-color.tag.sprint=magenta bold
-color.tag.CodeReview=cyan
 
-# verbose=yes
- verbose=affected,blank,context,edit,header,footnote,label,new-id,new-uuid,news,project,special,sync,recur,filter,unwait
+color.tag.sprint=bold
+color.uda.jira_stat.CodeReview=black
+color.uda.jira_stat.InProgress=magenta
+
+verbose=affected,blank,context,edit,header,footnote,label,new-id,new-uuid,news,project,special,sync,recur,filter,unwait
 
 regex=on
 search.case.sensitive=no
 
-# debug=on
 context.inherit=no
 context.jira.read=\/^JIRA\/
 context.meet=project:work.meeting
@@ -108,3 +78,11 @@ journal.info=off
 
 confirmation=on
 recurrence.confirmation=on
+
+# Alias
+alias.jopen=execute /home/mzd/bin/ts-jira open
+alias.jcopy=execute /home/mzd/bin/ts-jira copy
+alias.jsync=execute sh -c "/home/mzd/bin/jira-taskwarrior --no-dry-run"
+alias.jsync-dry=execute sh -c "/home/mzd/bin/jira-taskwarrior --dry-run"
+alias.link=execute /home/mzd/bin/ts-open-link
+alias.topen=execute /home/mzd/bin/tasktodo
