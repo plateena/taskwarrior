@@ -1,0 +1,3 @@
+[submodule "taskwarrior-themes"]
+	path = taskwarrior-themes
+	url = git@github.com:jrcharney/taskwarrior-themes
